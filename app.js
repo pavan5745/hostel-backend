@@ -1,8 +1,9 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const hostelRouter = require("./routes/hostelRoutes.js");
 const hostlerRouter = require("./routes/hostlerRoutes.js");
-const cors = require("cors");
+
 app.use(express.json());
 
 app.use(
