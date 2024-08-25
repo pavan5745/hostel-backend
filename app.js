@@ -7,7 +7,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://my-hostel.onrender.com/"], // React frontend URL
+    origin: ["http://localhost:3000", "https://my-hostel.onrender.com"], // Corrected React frontend URL
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     credentials: true,
   })
