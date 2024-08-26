@@ -33,7 +33,8 @@ router.patch(
 );
 
 // Route to delete a hostler (soft delete)
-router.delete("/hostlers/:hostlerId", hostlerController.deleteHostler);
+router.delete("/hostlers/:hostlerId",authController.protect,
+  authController.restrictTo("admin"), hostlerController.deleteHostler);
 
 // Route to get a hostler
 router.get(
@@ -44,14 +45,15 @@ router.get(
 );
 // Route to get sorted hostlers by due date
 router.get(
-  "/",
+  "/", authController.protect,
   authController.restrictTo("admin"),
   hostlerController.getAllHostlers
 );
-router.get("/sortHostlers", hostlerController.getHostlersSortedByDueDate);
+router.get("/sortHostlers",  authController.protect,authController.restrictTo("admin"),hostlerController.getHostlersSortedByDueDate);
 // total active hostlers
 router.get(
   "/hostlers/total-active",
+  authController.protect,
   authController.restrictTo("admin"),
   hostlerController.getTotalActiveHostlers
 );
@@ -59,6 +61,7 @@ router.get(
 // Route to get total income for a given month
 router.get(
   "/hostlers/total-income/:year/:month",
+  authController.protect,authController.restrictTo("admin"),
   hostlerController.getTotalIncomeForMonth
 );
 
